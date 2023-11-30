@@ -1,6 +1,7 @@
-import {useRef} from "react";
+import {useRef, useState} from "react";
 
 const Form = () =>{
+    const [taskResult, setFormState] = useState(null)
     const form = useRef(null)
     const handleSubmit = e => {
         e.preventDefault()
@@ -14,12 +15,19 @@ const Form = () =>{
 
         if (!Name.trim() || !Description.trim() || !State.trim()){
             console.log("ERROR!!!")
+            setFormState("error")
             return
         }
         console.log("Sending object...")
+        setFormState("success")
     }
     return (
         <>
+            {taskResult === "error" ? (
+            <p style={{ color: "red" }}>Form has errors. Please fill in all fields.</p>
+             ) : taskResult === "success" ? (
+            <p style={{ color: "green" }}>Form submitted successfully!</p>
+            ) : null}
             <form onSubmit={handleSubmit} ref={form}>
                 <input
                 name={"Name"}

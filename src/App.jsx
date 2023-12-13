@@ -1,11 +1,11 @@
 import './App.css'
-import Form from "./Form.jsx";
+import FormControlled from "./FormControlled.jsx";
 
 function App() {
   return (
     <>
       <h1>Form with react</h1>
-        <Form></Form>
+        <FormControlled></FormControlled>
     </>
   )
 }
